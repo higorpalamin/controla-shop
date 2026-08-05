@@ -12,8 +12,67 @@ datasource db {
   provider = "postgresql"
 }
 
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
-} 
+model Produto {
+  id           String  @id @default(cuid())
+  nome         String
+  sku          String? @unique
+  codigoBarras String? @unique
+  descricao    String?
+
+  precoCompra Decimal
+  precoVenda  Decimal
+
+  estoqueMinimo Int
+  quantidade    Int
+
+  categoriaId  String
+  fornecedorId String
+
+  categoria  Categoria  @relation(fields: [categoriaId], references: [id])
+  fornecedor Fornecedor @relation(fields: [fornecedorId], references: [id])
+
+  movimentacoes Movimentacao[]
+
+  createdAt DateTime @default(now())
+}
+
+model Categoria {
+  id String @id @default(cuid())
+
+  nome String
+
+  produtos Produto[]
+}
+
+model Fornecedor {
+  id String @id @default(cuid())
+
+  nome String
+
+  telefone String?
+
+  email String? @unique
+
+  produtos Produto[]
+}
+
+enum TipoMovimentacao {
+  ENTRADA
+  SAIDA
+}
+
+model Movimentacao {
+  id String @id @default(cuid())
+
+  produtoId String
+
+  tipo TipoMovimentacao
+
+  quantidade Int
+
+  observacao String?
+
+  createdAt DateTime @default(now())
+
+  produto Produto @relation(fields: [produtoId], references: [id])
+}
