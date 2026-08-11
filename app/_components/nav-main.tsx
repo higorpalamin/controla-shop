@@ -35,7 +35,7 @@ export function NavMain({
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="font-semibold text-lg flex items-center justify-center pb-10">
-        Menu
+        <span className="text-controla-medium">Menu</span>
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (

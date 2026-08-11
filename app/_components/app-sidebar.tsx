@@ -3,6 +3,7 @@
 import * as React from "react";
 import {
   BookOpen,
+  ChartNoAxesCombined,
   Minus,
   Package,
   Package2,
@@ -26,6 +27,11 @@ import NavHeader from "./nav-header";
 // This is sample data.
 const data = {
   navMain: [
+    {
+      title: "Dashboard",
+      url: "#",
+      icon: ChartNoAxesCombined
+    },
     {
       title: "Produtos",
       url: "#",

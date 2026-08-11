@@ -5,6 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-controla-primary: var(--controla-primary);
+  --color-controla-medium: var(--controla-medium);
+  --color-controla-green: var(--controla-green);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -49,6 +52,9 @@
 }
 
 :root {
+  --controla-primary: oklch(39.646% 0.10222 254.685);
+  --controla-medium: oklch(52.412% 0.12599 252.343);
+  --controla-green: oklch(69.644% 0.10531 190.282);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
