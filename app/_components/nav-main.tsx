@@ -39,10 +39,10 @@ export function NavMain({
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <Collapsible key={item.title}>
-            <SidebarMenuItem>
+          <Collapsible key={item.title} >
+            <SidebarMenuItem >
               <CollapsibleTrigger className="w-full">
-                <SidebarMenuButton tooltip={item.title} className="ml-2.5 cursor-pointer">
+                <SidebarMenuButton tooltip={item.title} className="ml-2.5 cursor-pointer" >
                   {item.icon && <item.icon className="w-6! h-6!" />}
                   <span className="group-data-[collapsible=icon]:hidden">
                     {item.title}

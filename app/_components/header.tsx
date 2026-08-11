@@ -1,6 +1,5 @@
 import { BellIcon, SearchIcon, Settings } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 
 function Header() {

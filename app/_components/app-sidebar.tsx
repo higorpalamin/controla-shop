@@ -103,18 +103,31 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type AppSidebarProps =
+  React.ComponentProps<typeof Sidebar> & {
+    user: {
+      name: string | null
+      email: string | null
+    }
+  }
+
+export function AppSidebar({
+  user,
+  ...props
+}: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <NavHeader />
       </SidebarHeader>
+
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
+
       <SidebarFooter>
-        <NavFooter />
+        <NavFooter user={user} />
       </SidebarFooter>
     </Sidebar>
-  );
+  )
 }

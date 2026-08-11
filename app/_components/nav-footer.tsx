@@ -5,18 +5,29 @@ import {
   SidebarMenuItem,
 } from "./ui/sidebar";
 import Link from "next/link";
-import { ChevronRight, LogOut, Settings, User } from "lucide-react";
+import { ChevronRight, Settings, User } from "lucide-react";
+import { LogoutButton } from "./logout-button";
 
-function NavFooter() {
+type NavFooterProps = {
+  user: {
+    name: string | null
+    email: string | null
+  }
+}
+
+function NavFooter({ user }: NavFooterProps) {
   return (
     <SidebarFooter className="border-t">
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton>
-            <Link href={"#"} className="flex items-center gap-2 rounded-lg w-full">
+            <Link
+              href={"#"}
+              className="flex items-center gap-2 rounded-lg w-full"
+            >
               <User className="size-4 shrink-0 w-6! h-6!" />
               <span className="group-data-[collapsible=icon]:hidden">
-                Usuario
+                {user.name}
               </span>
               <ChevronRight className="ml-auto group-data-[collapsible=icon]:hidden" />
             </Link>
@@ -25,7 +36,10 @@ function NavFooter() {
 
         <SidebarMenuItem>
           <SidebarMenuButton>
-            <Link href={"#"} className="flex items-center gap-2 rounded-lg w-full">
+            <Link
+              href={"#"}
+              className="flex items-center gap-2 rounded-lg w-full"
+            >
               <Settings className="size-4 shrink-0 w-6! h-6!" />
               <span className="group-data-[collapsible=icon]:hidden">
                 Configurações
@@ -35,14 +49,8 @@ function NavFooter() {
           </SidebarMenuButton>
         </SidebarMenuItem>
 
-        <SidebarMenuItem>
-          <SidebarMenuButton>
-            <Link href={"#"} className="flex items-center gap-2 rounded-lg w-full">
-              <LogOut className="size-4 shrink-0 w-6! h-6!" />
-              <span className="group-data-[collapsible=icon]:hidden">Sair</span>
-              <ChevronRight className="ml-auto group-data-[collapsible=icon]:hidden" />
-            </Link>
-          </SidebarMenuButton>
+        <SidebarMenuItem className="px-2.5">
+          <LogoutButton />
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarFooter>

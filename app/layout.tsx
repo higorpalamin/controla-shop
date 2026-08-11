@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/app/_lib/utils";
-import { SidebarProvider, SidebarTrigger } from "./_components/ui/sidebar";
-import { AppSidebar } from "./_components/app-sidebar";
-import Header from "./_components/header";
+
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,13 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
     >
       <body className="min-h-full flex flex-col">
-        <SidebarProvider defaultOpen={false}>
-          <AppSidebar />
-          <main className="w-full p-2">
-            <Header />
-            {children}
-          </main>
-        </SidebarProvider>
+        <main className="w-full">{children}</main>
       </body>
     </html>
   );
