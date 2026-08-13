@@ -34,24 +34,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="mt-10 w-200">
-        <Image
-          src="/controla-shop-mockup.png"
-          alt="Controla Shop Mockup"
-          width={800}
-          height={10}
-          className=" rounded-2xl border border-controla-primary"
-        />
-      </div>
+    <div className="flex items-center justify-center mt-30">
       <div className="mx-20 bg-white rounded-xl px-10 py-5 border border-controla-primary">
         <p className="text-center text-3xl">
           <span className="text-controla-primary font-bold">Controla</span>{" "}
           <span className="text-controla-green">Shop</span>
         </p>
-        <p className="text-sm text-center mt-3">Entre com suas credenciais.</p>
+        <p className="text-sm text-center mt-3">Redefinir senha.</p>
         <form onSubmit={handleLogin} className="flex flex-col">
-          <label className="mt-5 p-1">Email:</label>
+          <label className="mt-5 p-1">Insira seu email:</label>
           <input
             type="email"
             value={email}
@@ -60,30 +51,14 @@ export default function LoginPage() {
             className="border-2 border-controla-medium p-2 rounded-xl"
           />
 
-          <label className="mt-5 p-1">Senha:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="senha"
-            className="border-2 border-controla-medium p-2 rounded-xl"
-          />
-
-          {error && <p className="text-red-600">{error}</p>}
-
-          <Link
-            href={"/forgot-password"}
-            className="text-sm text-controla-primary mt-1 ml-auto"
-          >
-            Esqueceu a senha?
-          </Link>
-
           <button
             type="submit"
             className="border-2 border-controla-medium p-2 mt-5 rounded-xl bg-controla-medium text-white font-bold hover:opacity-90 cursor-pointer"
           >
-            Entrar
+            Enviar código
           </button>
+          <Link href={"/"} className="text-center border-2 border-controla-medium p-2 mt-5 rounded-xl bg-white text-controla-medium font-bold hover:opacity-90">
+          Voltar</Link>
         </form>
       </div>
     </div>

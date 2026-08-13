@@ -29,7 +29,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: ChartNoAxesCombined
     },
     {
@@ -40,12 +40,12 @@ const data = {
         {
           title: "Consultar",
           icon2: PackageSearch,
-          url: "#",
+          url: "/dashboard/products",
         },
         {
           title: "Novo",
           icon2: PackagePlus,
-          url: "#",
+          url: "/dashboard/products/new-product",
         },
       ],
     },
@@ -57,17 +57,17 @@ const data = {
         {
           title: "Consultar",
           icon2: Search,
-          url: "#",
+          url: "/dashboard/stock",
         },
         {
           title: "Entrada",
           icon2: Plus,
-          url: "#",
+          url: "/dashboard/stock/add",
         },
         {
           title: "Saída",
           icon2: Minus,
-          url: "#",
+          url: "/dashboard/stock/remove",
         },
       ],
     },
@@ -79,12 +79,12 @@ const data = {
         {
           title: "Consultar",
           icon2: Search,
-          url: "#",
+          url: "/dashboard/suppliers",
         },
         {
           title: "Novo",
           icon2: Plus,
-          url: "#",
+          url: "/dashboard/suppliers/add",
         },
       ],
     },
@@ -96,7 +96,7 @@ const data = {
         {
           title: "Consultar",
           icon2: Search,
-          url: "#",
+          url: "/dashboard/reports",
         },
       ],
     },

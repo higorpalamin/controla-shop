@@ -17,6 +17,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/app/_components/ui/sidebar";
+import Link from "next/link";
 
 export function NavMain({
   items,
@@ -44,9 +45,9 @@ export function NavMain({
               <CollapsibleTrigger className="w-full">
                 <SidebarMenuButton tooltip={item.title} className="ml-2.5 cursor-pointer" >
                   {item.icon && <item.icon className="w-6! h-6!" />}
-                  <span className="group-data-[collapsible=icon]:hidden">
+                  <Link href={item.url} className="group-data-[collapsible=icon]:hidden">
                     {item.title}
-                  </span>
+                  </Link>
                   <ChevronRight className="ml-auto group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -56,10 +57,10 @@ export function NavMain({
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton>
                         <a href={subItem.url}>
-                          <span className="flex gap-2 items-center">
+                          <Link href={subItem.url} className="flex gap-2 items-center">
                             {subItem.icon2 && <subItem.icon2 size={20} />}
                             {subItem.title}
-                          </span>
+                          </Link>
                         </a>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
