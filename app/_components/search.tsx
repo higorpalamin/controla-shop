@@ -63,7 +63,7 @@ function Search() {
         />
 
         <Button
-          className="cursor-pointer bg-controla-primary hover:bg-controla-primary"
+          className="cursor-pointer bg-controla-medium hover:opacity-80 hover:bg-controla-medium"
           type="submit"
           disabled={isPending}
         >
