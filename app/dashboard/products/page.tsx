@@ -5,6 +5,7 @@ import { buscarProdutos } from "@/app/_services/produto.service";
 
 import Filtrar from "@/app/_components/filtrar-button";
 import ProductsTable from "@/app/_components/products-table";
+import { Decimal } from "@prisma/client/runtime/client";
 
 type ProductsProps = {
   searchParams: Promise<{
@@ -22,8 +23,16 @@ export default async function Products({ searchParams }: ProductsProps) {
     sku: produto.sku ?? "",
     codigoBarras: produto.codigoBarras ?? "",
     descricao: produto.descricao ?? "",
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   })) as any;
+
+  const produtosFormatados = produtos.map(
+    (produto: { precoCompra: Decimal; precoVenda: Decimal }) => ({
+      ...produto,
+      precoCompra: Number(produto.precoCompra),
+      precoVenda: Number(produto.precoVenda),
+    }),
+  );
 
   return (
     <div className="p-4">
@@ -49,7 +58,7 @@ export default async function Products({ searchParams }: ProductsProps) {
             </Link>
           </div>
         </div>
-        <ProductsTable produtos={produtos} search={search} />
+        <ProductsTable produtos={produtosFormatados} search={search} />
       </div>
     </div>
   );

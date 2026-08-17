@@ -1,9 +1,12 @@
+"use client";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/app/_components/ui/tooltip";
 import { Button } from "@/app/_components/ui/button";
+import { toast } from "@/app/_components/ui/toast";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +24,8 @@ import {
   TableRow,
 } from "@/app/_components/ui/table";
 import { MoreHorizontalIcon } from "lucide-react";
+import { deletarProduto } from "../_services/produto.service";
+import { useRouter } from "next/navigation";
 
 type Product = {
   id: string;
@@ -41,6 +46,33 @@ function ProductsTable({
   search?: string;
   produtos?: Product[];
 }) {
+  const router = useRouter();
+
+  function onHandleDelete(produto: Product) {
+    deletarProduto(produto)
+      .then((resultado) => {
+        if (resultado?.success) {
+          toast.add({
+            type: "success",
+            description: resultado.message,
+          });
+
+          router.push("/dashboard/products");
+        } else {
+          toast.add({
+            type: "error",
+            description: resultado?.message,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.add({
+          type: "error",
+          description: error.message,
+        });
+      });
+  }
   return (
     <Table>
       {produtos && produtos.length > 0 ? (
@@ -117,21 +149,31 @@ function ProductsTable({
                   <DropdownMenu>
                     <DropdownMenuTrigger
                       render={
-                        <Button variant="ghost" size="icon" className="size-8">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="size-8 cursor-pointer"
+                        >
                           <MoreHorizontalIcon />
-                          <span className="sr-only">Open menu</span>
                         </Button>
                       }
                     />
-
                     <DropdownMenuContent>
-                      <DropdownMenuItem>Editar</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">
+                        Editar
+                      </DropdownMenuItem>
 
-                      <DropdownMenuItem>Movimentar</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">
+                        Movimentar
+                      </DropdownMenuItem>
 
                       <DropdownMenuSeparator />
 
-                      <DropdownMenuItem variant="destructive">
+                      <DropdownMenuItem
+                        variant="destructive"
+                        className="cursor-pointer"
+                        onClick={() => onHandleDelete(produto)}
+                      >
                         Deletar
                       </DropdownMenuItem>
                     </DropdownMenuContent>
