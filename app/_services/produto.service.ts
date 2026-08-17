@@ -20,6 +20,7 @@ export async function buscarProdutos(search?: string) {
           ],
         }
       : undefined,
+    include: { categoria: true },
     orderBy: {
       nome: "asc",
     },
