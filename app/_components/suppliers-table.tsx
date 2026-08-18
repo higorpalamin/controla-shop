@@ -1,10 +1,5 @@
 "use client";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/app/_components/ui/tooltip";
 import { Button } from "@/app/_components/ui/button";
 import { toast } from "@/app/_components/ui/toast";
 import {
@@ -24,32 +19,34 @@ import {
   TableRow,
 } from "@/app/_components/ui/table";
 import { MoreHorizontalIcon } from "lucide-react";
-import { deletarProduto } from "../_services/products.service";
 import { useRouter } from "next/navigation";
+import { deletarFornecedor } from "../_services/suppliers.service";
 
-type Product = {
+type Supplier = {
   id: string;
   nome: string;
-  sku: string;
-  quantidade: number;
-  estoqueMinimo: number;
-  precoVenda: number;
-  categoria: {
-    nome: string;
-  };
+  cnpj: string | null;
+  ie: string;
+  email: string;
+  telefone: string;
+  rua: string;
+  cidade: string;
+  bairro: string;
+  estado: string;
+  cep: string;
 };
 
-function ProductsTable({
+function SuppliersTable({
   search,
-  produtos,
+  suppliers,
 }: {
   search?: string;
-  produtos?: Product[];
+  suppliers?: Supplier[];
 }) {
   const router = useRouter();
 
-  function onHandleDelete(produto: Product) {
-    deletarProduto(produto)
+  function onHandleDelete(supplier: Supplier) {
+    deletarFornecedor({ id: supplier.id })
       .then((resultado) => {
         if (resultado?.success) {
           toast.add({
@@ -57,7 +54,7 @@ function ProductsTable({
             description: resultado.message,
           });
 
-          router.push("/dashboard/products");
+          router.push("/dashboard/suppliers");
         } else {
           toast.add({
             type: "error",
@@ -75,74 +72,69 @@ function ProductsTable({
   }
   return (
     <Table>
-      {produtos && produtos.length > 0 ? (
+      {suppliers && suppliers.length > 0 ? (
         <>
           <TableCaption>
             {search
               ? `Resultados para "${search}"`
-              : "Todos os produtos cadastrados"}
+              : "Todos os fornecedores cadastrados"}
           </TableCaption>
 
           <TableHeader>
             <TableRow className="uppercase border-controla-green hover:bg-white">
               <TableHead className="w-max text-controla-green font-semibold">
-                Produto
+                <span>Fornecedor</span>
               </TableHead>
-              <TableHead className="w-30 text-controla-green font-semibold text-center">
-                SKU
+              <TableHead className="w-80 text-controla-green font-semibold text-center">
+                <span>CNPJ</span>
+              </TableHead>
+              <TableHead className="w-80 text-controla-green font-semibold text-center">
+                <span>IE</span>
               </TableHead>
               <TableHead className="w-40 text-controla-green font-semibold text-center">
-                Categoria
+                <span>Telefone</span>
               </TableHead>
-              <TableHead className="w-15 text-controla-green font-semibold text-center">
-                Estoque
+              <TableHead className="w-80 text-controla-green font-semibold text-center">
+                <span>Email</span>
               </TableHead>
-              <TableHead className="w-25 text-controla-green font-semibold text-center">
-                Preço venda
+              <TableHead className="w-80 text-controla-green font-semibold text-center">
+                <span>Endereço</span>
               </TableHead>
-              <TableHead className="w-15 text-controla-green font-semibold text-center">
-                Ações
+              <TableHead className="w-40 text-controla-green font-semibold text-center">
+                <span>Ações</span>
               </TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
-            {produtos.map((produto) => (
-              <TableRow key={produto.id} className="border-controla-green">
+            {suppliers.map((supplier) => (
+              <TableRow key={supplier.id} className="border-controla-green">
                 <TableCell className="font-medium uppercase">
-                  {produto.nome}
+                  <span>{supplier.nome}</span>
+                </TableCell>
+                <TableCell className="text-center">
+                  <span>{supplier.cnpj ?? "-"}</span>
+                </TableCell>
+                <TableCell className="text-center">
+                  <span>{supplier.ie ?? "-"}</span>
+                </TableCell>
+                <TableCell className="text-center">
+                  <span>{supplier.telefone ?? "-"}</span>
                 </TableCell>
 
-                <TableCell className="text-center">{produto.sku}</TableCell>
-
                 <TableCell className="text-center">
-                  {produto.categoria.nome}
+                  <span>{supplier.email ?? "-"}</span>
                 </TableCell>
 
-                <Tooltip>
-                  <TooltipTrigger
-                    render={
-                      <TableCell className="text-center">
-                        {produto.quantidade < produto.estoqueMinimo ? (
-                          <>
-                            <span className="bg-red-200 px-2 p-1 rounded-md">
-                              {produto.quantidade}
-                            </span>
-                            <TooltipContent>
-                              <p>Estoque abaixo do mínimo!</p>
-                            </TooltipContent>
-                          </>
-                        ) : (
-                          <span>{produto.quantidade}</span>
-                        )}
-                      </TableCell>
-                    }
-                  />
-                </Tooltip>
-
                 <TableCell className="text-center">
-                  <span>R$ </span>
-                  {String(produto.precoVenda.toFixed(2))}
+                  {supplier.rua ? (
+                    <span>
+                      {supplier.rua}, {supplier.cidade}, {supplier.bairro},{" "}
+                      {supplier.estado} - {supplier.cep}
+                    </span>
+                  ) : (
+                    <span>-</span>
+                  )}
                 </TableCell>
 
                 <TableCell className="text-center">
@@ -172,7 +164,7 @@ function ProductsTable({
                       <DropdownMenuItem
                         variant="destructive"
                         className="cursor-pointer"
-                        onClick={() => onHandleDelete(produto)}
+                        onClick={() => onHandleDelete(supplier)}
                       >
                         Deletar
                       </DropdownMenuItem>
@@ -184,10 +176,10 @@ function ProductsTable({
           </TableBody>
         </>
       ) : (
-        <p>Não foram encontrados produtos com: &quot;{search}&quot;</p>
+        <p>Não foram encontrados fornecedores com: &quot;{search}&quot;</p>
       )}
     </Table>
   );
 }
 
-export default ProductsTable;
+export default SuppliersTable;

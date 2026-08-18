@@ -12,14 +12,14 @@ import * as z from "zod";
 import { Field, FieldError } from "./ui/field";
 
 const formSchema = z.object({
-  produto: z.string().trim(),
+  supplier: z.string().trim(),
 });
 
-function Search() {
+function ProductSearch() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      produto: "",
+      supplier: "",
     },
   });
   const [isPending, startTransition] = useTransition();
@@ -27,15 +27,15 @@ function Search() {
   const router = useRouter();
 
   const onHandleSubmit = (data: z.infer<typeof formSchema>) => {
-    const search = data.produto.trim();
+    const search = data.supplier.trim();
 
     startTransition(() => {
       if (!search) {
-        router.push("/dashboard/products");
+        router.push("/dashboard/suppliers");
         return;
       }
 
-      router.push(`/dashboard/products?search=${encodeURIComponent(search)}`);
+      router.push(`/dashboard/suppliers?search=${encodeURIComponent(search)}`);
     });
   };
 
@@ -46,7 +46,7 @@ function Search() {
         onSubmit={form.handleSubmit(onHandleSubmit)}
       >
         <Controller
-          name="produto"
+          name="supplier"
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
@@ -78,4 +78,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default ProductSearch;

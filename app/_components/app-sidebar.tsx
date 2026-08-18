@@ -30,7 +30,7 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: ChartNoAxesCombined
+      icon: ChartNoAxesCombined,
     },
     {
       title: "Produtos",
@@ -46,6 +46,23 @@ const data = {
           title: "Novo",
           icon2: PackagePlus,
           url: "/dashboard/products/new-product",
+        },
+      ],
+    },
+    {
+      title: "Fornecedores",
+      url: "#",
+      icon: BookOpen,
+      items: [
+        {
+          title: "Consultar",
+          icon2: Search,
+          url: "/dashboard/suppliers",
+        },
+        {
+          title: "Novo",
+          icon2: Plus,
+          url: "/dashboard/suppliers/add",
         },
       ],
     },
@@ -71,23 +88,7 @@ const data = {
         },
       ],
     },
-    {
-      title: "Fornecedores",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Consultar",
-          icon2: Search,
-          url: "/dashboard/suppliers",
-        },
-        {
-          title: "Novo",
-          icon2: Plus,
-          url: "/dashboard/suppliers/add",
-        },
-      ],
-    },
+
     {
       title: "Relatórios",
       url: "#",
@@ -103,18 +104,14 @@ const data = {
   ],
 };
 
-type AppSidebarProps =
-  React.ComponentProps<typeof Sidebar> & {
-    user: {
-      name: string | null
-      email: string | null
-    }
-  }
+type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
+  user: {
+    name: string | null;
+    email: string | null;
+  };
+};
 
-export function AppSidebar({
-  user,
-  ...props
-}: AppSidebarProps) {
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -129,5 +126,5 @@ export function AppSidebar({
         <NavFooter user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

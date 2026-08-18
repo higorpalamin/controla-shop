@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/app/_components/ui/select";
 import { useRouter } from "next/navigation";
-import { cadastrarProduto } from "../_services/produto.service";
+import { cadastrarProduto } from "../_services/products.service";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -339,6 +339,12 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
                             min="0"
                             className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none w-30"
                             {...field}
+                            value={
+                              typeof field.value === "number" ||
+                              typeof field.value === "string"
+                                ? field.value
+                                : ""
+                            }
                             onChange={(e) =>
                               field.onChange(Number(e.target.value || 0))
                             }
@@ -372,6 +378,12 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
                             min="0"
                             className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none w-30"
                             {...field}
+                            value={
+                              typeof field.value === "number" ||
+                              typeof field.value === "string"
+                                ? field.value
+                                : ""
+                            }
                             onChange={(e) =>
                               field.onChange(Number(e.target.value || 0))
                             }
@@ -410,6 +422,12 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
                           min="0"
                           className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none w-30"
                           {...field}
+                          value={
+                            typeof field.value === "number" ||
+                            typeof field.value === "string"
+                              ? field.value
+                              : ""
+                          }
                           onChange={(e) =>
                             field.onChange(Number(e.target.value || 0))
                           }
@@ -439,6 +457,12 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
                           min="0"
                           className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none w-30"
                           {...field}
+                          value={
+                            typeof field.value === "number" ||
+                            typeof field.value === "string"
+                              ? field.value
+                              : ""
+                          }
                           onChange={(e) =>
                             field.onChange(Number(e.target.value || 0))
                           }

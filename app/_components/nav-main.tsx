@@ -18,6 +18,7 @@ import {
   SidebarMenuSubItem,
 } from "@/app/_components/ui/sidebar";
 import Link from "next/link";
+import { useSidebar } from "./ui/sidebar";
 
 export function NavMain({
   items,
@@ -33,6 +34,7 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const { setOpen } = useSidebar();
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="font-semibold text-lg flex items-center justify-center pb-10">
@@ -40,12 +42,21 @@ export function NavMain({
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <Collapsible key={item.title} >
-            <SidebarMenuItem >
-              <CollapsibleTrigger className="w-full">
-                <SidebarMenuButton tooltip={item.title} className="ml-2.5 cursor-pointer" >
+          <Collapsible key={item.title}>
+            <SidebarMenuItem>
+              <CollapsibleTrigger
+                className="w-full"
+                onClick={() => setOpen(true)}
+              >
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  className="ml-2.5 cursor-pointer w-full"
+                >
                   {item.icon && <item.icon className="w-6! h-6!" />}
-                  <Link href={item.url} className="group-data-[collapsible=icon]:hidden">
+                  <Link
+                    href={item.url}
+                    className="group-data-[collapsible=icon]:hidden"
+                  >
                     {item.title}
                   </Link>
                   <ChevronRight className="ml-auto group-data-[collapsible=icon]:hidden" />

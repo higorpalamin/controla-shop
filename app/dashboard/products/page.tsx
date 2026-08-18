@@ -1,11 +1,11 @@
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import Search from "@/app/_components/search";
-import { buscarProdutos } from "@/app/_services/produto.service";
+import { buscarProdutos } from "@/app/_services/products.service";
 
 import Filtrar from "@/app/_components/filtrar-button";
 import ProductsTable from "@/app/_components/products-table";
 import { Decimal } from "@prisma/client/runtime/client";
+import ProductSearch from "@/app/_components/product-search";
 
 type ProductsProps = {
   searchParams: Promise<{
@@ -46,7 +46,7 @@ export default async function Products({ searchParams }: ProductsProps) {
 
       <div className="m-auto w-[95%]">
         <div className="flex items-center justify-between py-5">
-          <Search />
+          <ProductSearch />
           <div className="flex items-center gap-2">
             <Filtrar />
             <Link
