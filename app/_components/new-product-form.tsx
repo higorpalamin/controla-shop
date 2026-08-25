@@ -26,6 +26,7 @@ import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 import { useTransition } from "react";
 import { Loader2Icon } from "lucide-react";
+import { Decimal } from "@prisma/client/runtime/client";
 
 const formSchema = z.object({
   nome: z.string().trim().min(5, "Digite mais elementos."),
@@ -114,7 +115,7 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
             <Field>
               <div>
                 <FieldLabel htmlFor="nome_produto" className="mb-2">
-                  Nome
+                  Nome do produto
                 </FieldLabel>
                 <Controller
                   name="nome"

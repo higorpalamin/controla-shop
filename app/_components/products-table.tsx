@@ -73,6 +73,11 @@ function ProductsTable({
         });
       });
   }
+
+  function onHandleEdit(produto: Product) {
+    router.push(`/dashboard/products/edit-product/${produto.id}`);
+  }
+
   return (
     <Table>
       {produtos && produtos.length > 0 ? (
@@ -159,7 +164,10 @@ function ProductsTable({
                       }
                     />
                     <DropdownMenuContent>
-                      <DropdownMenuItem className="cursor-pointer">
+                      <DropdownMenuItem
+                        className="cursor-pointer"
+                        onClick={() => onHandleEdit(produto)}
+                      >
                         Editar
                       </DropdownMenuItem>
 
