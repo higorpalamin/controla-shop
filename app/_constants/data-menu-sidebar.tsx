@@ -1,6 +1,7 @@
 import {
   BookOpen,
   ChartNoAxesCombined,
+  List,
   Minus,
   Package,
   Package2,
@@ -24,14 +25,19 @@ export const data = {
       icon: Package,
       items: [
         {
-          title: "Consultar",
+          title: "Pesquisar",
           icon2: PackageSearch,
           url: "/dashboard/products",
         },
         {
-          title: "Novo",
+          title: "Novo Produto",
           icon2: PackagePlus,
           url: "/dashboard/products/new-product",
+        },
+        {
+          title: "Categorias",
+          icon2: List,
+          url: "/dashboard/products/categories",
         },
       ],
     },
@@ -41,12 +47,12 @@ export const data = {
       icon: BookOpen,
       items: [
         {
-          title: "Consultar",
+          title: "Pesquisar",
           icon2: Search,
           url: "/dashboard/suppliers",
         },
         {
-          title: "Novo",
+          title: "Novo Fornecedor",
           icon2: Plus,
           url: "/dashboard/suppliers/add",
         },
@@ -58,7 +64,7 @@ export const data = {
       icon: Package2,
       items: [
         {
-          title: "Consultar",
+          title: "Pesquisar",
           icon2: Search,
           url: "/dashboard/stock",
         },
@@ -81,7 +87,7 @@ export const data = {
       icon: Settings2,
       items: [
         {
-          title: "Consultar",
+          title: "Pesquisar",
           icon2: Search,
           url: "/dashboard/reports",
         },

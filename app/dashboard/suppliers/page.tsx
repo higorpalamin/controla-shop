@@ -1,4 +1,4 @@
-import Filtrar from "@/app/_components/filtrar-button";
+import Filtrar from "@/app/_components/filter-button";
 import SupplierSearch from "@/app/_components/supplier-search";
 import SuppliersTable from "@/app/_components/suppliers-table";
 import { buscarFornecedores } from "@/app/_services/suppliers.service";
