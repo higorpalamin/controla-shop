@@ -1,36 +1,21 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 
-export default function LoginPage() {
-  const router = useRouter();
-
+export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+  async function handleReset(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    setError("");
-
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (result?.error) {
-      setError("Email ou senha inválidos");
+    if (!email) {
+      setError("Por favor, digite seu email.");
       return;
     }
-
-    router.push("/dashboard");
-    router.refresh();
+    setError("");
+    setSuccess(true);
   }
 
   return (
@@ -41,7 +26,17 @@ export default function LoginPage() {
           <span className="text-controla-green">Shop</span>
         </p>
         <p className="text-sm text-center mt-3">Redefinir senha.</p>
-        <form onSubmit={handleLogin} className="flex flex-col">
+        {error && (
+          <p className="mt-2 text-center text-xs font-semibold text-rose-600">
+            {error}
+          </p>
+        )}
+        {success && (
+          <p className="mt-2 text-center text-xs font-semibold text-emerald-600">
+            Código enviado com sucesso para o email!
+          </p>
+        )}
+        <form onSubmit={handleReset} className="flex flex-col">
           <label className="mt-5 p-1">Insira seu email:</label>
           <input
             type="email"

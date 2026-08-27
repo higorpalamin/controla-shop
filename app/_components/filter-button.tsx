@@ -14,7 +14,7 @@ function Filtrar() {
     <div className="relative">
       <Button
         className="cursor-pointer text-md font-semibold bg-controla-medium hover:opacity-80 hover:bg-controla-medium"
-        // onClick={toggleMenu}
+        onClick={toggleMenu}
       >
         <FilterIcon className="stroke-3" />
         Filtrar

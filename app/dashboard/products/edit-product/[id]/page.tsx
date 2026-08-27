@@ -4,15 +4,18 @@ import { buscarProdutoPorId } from "@/app/_services/products.service";
 import { notFound } from "next/navigation";
 
 type EditProductProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 async function EditProduct({ params }: EditProductProps) {
   const { id } = await params;
 
   const produto = await buscarProdutoPorId(id);
+  if (!produto) {
+    notFound();
+  }
   const suppliers = await prisma.fornecedor.findMany();
   const categories = await prisma.categoria.findMany();
 

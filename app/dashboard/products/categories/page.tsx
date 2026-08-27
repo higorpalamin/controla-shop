@@ -1,7 +1,6 @@
 import CategoriesSearch from "@/app/_components/categories-search";
 import CategoriesTable from "@/app/_components/categories-table";
 import Filtrar from "@/app/_components/filter-button";
-import prisma from "@/app/_lib/prisma";
 import buscarCategorias from "@/app/_services/categories.service";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";

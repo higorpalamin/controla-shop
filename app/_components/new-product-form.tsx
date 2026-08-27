@@ -26,7 +26,6 @@ import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 import { useTransition } from "react";
 import { Loader2Icon } from "lucide-react";
-import { Decimal } from "@prisma/client/runtime/client";
 
 const formSchema = z.object({
   nome: z.string().trim().min(5, "Digite mais elementos."),
@@ -63,7 +62,7 @@ function NewProductForm({ categories, suppliers }: NewProductFormProps) {
   type FormInput = z.input<typeof formSchema>;
   type FormOutput = z.output<typeof formSchema>;
 
-  const form = useForm<FormInput, any, FormOutput>({
+  const form = useForm<FormInput, unknown, FormOutput>({
     resolver: zodResolver(formSchema),
   });
 

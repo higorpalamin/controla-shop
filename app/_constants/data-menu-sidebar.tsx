@@ -54,7 +54,7 @@ export const data = {
         {
           title: "Novo Fornecedor",
           icon2: Plus,
-          url: "/dashboard/suppliers/add",
+          url: "/dashboard/suppliers/new-supplier",
         },
       ],
     },
