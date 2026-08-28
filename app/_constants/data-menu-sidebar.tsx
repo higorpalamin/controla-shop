@@ -64,11 +64,6 @@ export const data = {
       icon: Package2,
       items: [
         {
-          title: "Pesquisar",
-          icon2: Search,
-          url: "/dashboard/stock",
-        },
-        {
           title: "Entrada",
           icon2: Plus,
           url: "/dashboard/stock/add",

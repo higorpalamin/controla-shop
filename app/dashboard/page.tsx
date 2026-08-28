@@ -37,15 +37,12 @@ export default async function DashboardPage() {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-extrabold tracking-tight text-controla-primary md:text-3xl">
-              Painel de Controle
+              Dashboard
             </h1>
-            <span className="inline-flex items-center gap-1 rounded-full bg-controla-green/20 px-2.5 py-0.5 text-xs font-semibold text-teal-800 dark:text-teal-300">
-              <Sparkles className="h-3 w-3" />
-              Micro SaaS
-            </span>
           </div>
           <p className="mt-1 text-sm text-controla-medium">
-            Visão geral em tempo real do seu estoque, movimentações e faturamento.
+            Visão geral em tempo real do seu estoque, movimentações e
+            faturamento.
           </p>
         </div>
 
@@ -56,7 +53,14 @@ export default async function DashboardPage() {
       </div>
 
       {/* Ações Rápidas de Navegação */}
-      <QuickActions />
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <h1 className="text-md font-semibold tracking-tight text-controla-primary">
+            Menu rápido
+          </h1>
+        </div>
+        <QuickActions />
+      </div>
 
       {/* 1. Grade de Cards de Métricas (6 cards principais) */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
@@ -133,7 +137,7 @@ export default async function DashboardPage() {
           })}
           subtitle={`Custo: ${metrics.valorTotalEstoqueCusto.toLocaleString(
             "pt-BR",
-            { style: "currency", currency: "BRL" }
+            { style: "currency", currency: "BRL" },
           )}`}
           icon={CircleDollarSign}
           variant="primary"

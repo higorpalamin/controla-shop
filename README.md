@@ -6,7 +6,7 @@
 
 ## 🚀 Sobre o Projeto
 
-O **Controla Shop** é uma plataforma desenvolvida para simplificar a gestão de estoque de pequenas e médias empresas. Com uma interface moderna, responsiva e focada em produtividade, o sistema oferece controle ponta a ponta sobre mercadorias, fornecedores, entradas/saídas e alertas de reposição.
+O **Controla Shop** é uma plataforma desenvolvida para simplificar a gestão de estoque de pequenas e médias empresas. Com uma interface moderna, responsiva e focada em produtividade. O sistema oferece controle de ponta a ponta sobre mercadorias, fornecedores, entradas/saídas e alertas de reposição.
 
 ---
 
@@ -53,56 +53,21 @@ O **Controla Shop** é uma plataforma desenvolvida para simplificar a gestão de
 ### 🔒 6. Autenticação e Segurança
 
 - Autenticação via **NextAuth (Auth.js v5)** com credenciais seguras e senhas criptografadas (`bcryptjs`).
-- Controle de acesso baseado em funções (`Role`: `ADMIN` e `FUNCIONARIO`).
+- Controle de acesso baseado em funções (Admin e Colaboradores).
 - Proteção automática de rotas via Middleware/Server Components.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Camada                      | Tecnologia                                                                                                      |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| **Framework**               | [Next.js 16.3](https://nextjs.org/) (App Router & Server Components)                                            |
-| **Biblioteca UI**           | [React 19](https://react.dev/)                                                                                  |
-| **Estilização**             | [Tailwind CSS v4](https://tailwindcss.com/) & `tw-animate-css`                                                  |
-| **Componentes Base**        | [Base UI](https://base-ui.com/) & [Lucide Icons](https://lucide.dev/)                                           |
-| **Banco de Dados & ORM**    | [PostgreSQL](https://www.postgresql.org/) & [Prisma ORM 7.9](https://www.prisma.io/) (com `@prisma/adapter-pg`) |
-| **Formulários & Validação** | [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)                                       |
-| **Autenticação**            | [NextAuth.js v5 (Beta)](https://authjs.dev/)                                                                    |
-| **Linguagem**               | [TypeScript 5](https://www.typescriptlang.org/)                                                                 |
-
----
-
-## 📁 Estrutura de Diretórios
-
-```plaintext
-controla-shop/
-├── app/
-│   ├── _actions/         # Server Actions (autenticação, etc.)
-│   ├── _components/      # Componentes reutilizáveis de UI e Dashboard
-│   │   ├── dashboard/    # Cards, gráficos e alertas do dashboard
-│   │   └── ui/           # Primitivas de interface (botões, inputs, sidebar, dialogs)
-│   ├── _constants/       # Menus e constantes estáticas
-│   ├── _lib/             # Configuração do Prisma Client e utilitários
-│   ├── _services/        # Camada de serviços e regras de negócio (produtos, dashboard, fornecedores)
-│   ├── api/              # Rotas de API (NextAuth)
-│   ├── dashboard/        # Rotas autenticadas da aplicação
-│   │   ├── products/     # Listagem, criação e edição de produtos e categorias
-│   │   ├── stock/        # Controle de entradas e saídas de estoque
-│   │   ├── suppliers/    # Gestão de fornecedores
-│   │   └── reports/      # Consultas e relatórios
-│   ├── globals.css       # Design tokens e variáveis de tema
-│   └── layout.tsx        # Layout raiz
-├── prisma/
-│   ├── schema.prisma     # Modelagem de dados PostgreSQL
-│   ├── seed.ts           # Carga de dados iniciais para testes
-│   └── migrations/       # Histórico de migrações do banco de dados
-├── public/               # Arquivos e assets estáticos
-├── auth.ts               # Configurações do Auth.js / NextAuth
-└── package.json          # Dependências e scripts
-```
-
----
+| **Framework** | [Next.js 16.3] (App Router & Server Components)
+| **Biblioteca UI** | [React 19]
+| **Estilização** | [Tailwind CSS v4]
+| **Componentes Base** | [Base UI] & [Lucide Icons]
+| **Banco de Dados & ORM** | [PostgreSQL] & [Prisma ORM 7.9]
+| **Formulários & Validação** | [React Hook Form] & [Zod]
+| **Autenticação** | [NextAuth.js v5 (Beta)]
+| **Linguagem** | [TypeScript 5]
 
 ## ⚙️ Como Executar o Projeto Localmente
 

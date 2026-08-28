@@ -27,31 +27,36 @@ export default function MetricCard({
     switch (variant) {
       case "primary":
         return {
-          iconBg: "bg-controla-primary/10 text-controla-primary border-controla-primary/20",
+          iconBg:
+            "bg-controla-primary/10 text-controla-primary border-controla-primary/20",
           cardBorder: "hover:border-controla-primary/40",
           highlight: "bg-controla-primary",
         };
       case "medium":
         return {
-          iconBg: "bg-controla-medium/10 text-controla-medium border-controla-medium/20",
+          iconBg:
+            "bg-controla-medium/10 text-controla-medium border-controla-medium/20",
           cardBorder: "hover:border-controla-medium/40",
           highlight: "bg-controla-medium",
         };
       case "green":
         return {
-          iconBg: "bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800",
+          iconBg:
+            "bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800",
           cardBorder: "hover:border-emerald-300",
           highlight: "bg-emerald-500",
         };
       case "warning":
         return {
-          iconBg: "bg-amber-50 text-amber-600 border-amber-200 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800",
+          iconBg:
+            "bg-amber-50 text-amber-600 border-amber-200 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800",
           cardBorder: "hover:border-amber-300",
           highlight: "bg-amber-500",
         };
       case "danger":
         return {
-          iconBg: "bg-rose-50 text-rose-600 border-rose-200 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800",
+          iconBg:
+            "bg-rose-50 text-rose-600 border-rose-200 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800",
           cardBorder: "hover:border-rose-300",
           highlight: "bg-rose-500",
         };
@@ -97,32 +102,29 @@ export default function MetricCard({
             {title}
           </p>
           <div className="flex items-baseline gap-2">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               {value}
             </h3>
-            {badge && (
-              <span
-                className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${getBadgeClass(
-                  badge
-                )}`}
-              >
-                {badge.text}
-              </span>
-            )}
           </div>
           {subtitle && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">{subtitle}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {subtitle}
+            </p>
           )}
         </div>
 
         <div
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border shadow-xs transition-transform duration-200 group-hover:scale-105 ${styles.iconBg}`}
+          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-xl border shadow-xs transition-transform duration-200 group-hover:scale-105 ${styles.iconBg}`}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4" />
         </div>
       </div>
 
-      {footer && <div className="mt-3 border-t border-gray-100 pt-3 dark:border-gray-800/80">{footer}</div>}
+      {footer && (
+        <div className="mt-3 border-t border-gray-100 pt-3 dark:border-gray-800/80">
+          {footer}
+        </div>
+      )}
     </div>
   );
 }
